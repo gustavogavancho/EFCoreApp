@@ -1,0 +1,60 @@
+﻿<Page
+    x:Class="EFCoreApp.UWP.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:EFCoreApp.UWP"
+    xmlns:model="using:EFCoreApp.Model"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Loaded="Page_Loaded">
+
+    <StackPanel>
+        
+        <TextBlock Text="Cliente"
+                   FontSize="54" 
+                   FontWeight="Bold" 
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"/>
+
+        <TextBox x:Name="IdTextBox" 
+                 Header="Id:" 
+                 Grid.Row="1"
+                 Width="250" 
+                 IsEnabled="False"/>
+        <TextBox x:Name="NombreTextBox" 
+                 Header="Nombre:" 
+                 Grid.Row="2" 
+                 Width="250"/>
+        <TextBox x:Name="ApellidosTextBox" 
+                 Header="Nombre:" 
+                 Grid.Row="3" 
+                 Width="250"/>
+        <TextBox x:Name="DniTextBox" 
+                 Header="Dni:" 
+                 Grid.Row="4" 
+                 Width="250"/>
+        <TextBox x:Name="DireccionTextBox" 
+                 Header="Direccion:"
+                 Grid.Row="5" 
+                 Width="250"/>
+        
+        <Button x:Name="GuardarButton" 
+                Content="Guardar"
+                HorizontalAlignment="Center" 
+                Click="GuardarButton_Click"/>
+        
+        <ListView x:Name="ClientesListView" BorderBrush="Gray" BorderThickness="2">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="model:Cliente">
+                    <StackPanel>
+                        <TextBlock Text="{x:Bind Nombres}" FontWeight="Bold"/>
+                        <TextBlock Text="{x:Bind Apellidos}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </StackPanel>
+</Page>
